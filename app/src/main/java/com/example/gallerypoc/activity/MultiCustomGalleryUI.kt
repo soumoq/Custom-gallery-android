@@ -1,4 +1,4 @@
-package com.example.gallerypoc
+package com.example.gallerypoc.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gallerypoc.R
 import com.example.gallerypoc.adapter.GalleryPicturesAdapter
 import com.example.gallerypoc.adapter.SpaceItemDecoration
 import com.example.gallerypoc.model.GalleryPicture
