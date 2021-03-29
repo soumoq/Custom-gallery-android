@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.gallerypoc.R
+import com.example.gallerypoc.activity.MultiCustomGalleryUI
 import com.example.gallerypoc.model.GalleryPicture
 import kotlinx.android.synthetic.main.multi_gallery_listitem.*
 

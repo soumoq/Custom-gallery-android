@@ -2,6 +2,7 @@ package com.example.gallerypoc.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import com.example.gallerypoc.R
 import com.example.gallerypoc.adapter.GalleryPicturesAdapter
 import com.example.gallerypoc.adapter.SpaceItemDecoration
@@ -60,7 +64,13 @@ class MultiCustomGalleryUI : AppCompatActivity() {
         rv.adapter = adapter
 
         adapter.setOnClickListener { galleryPicture ->
-            showToast(galleryPicture.path)
+            //showToast(galleryPicture.path)
+            selected_image.visibility = View.VISIBLE
+            Glide.with(this)
+                .load(galleryPicture.path)
+                .error(R.drawable.ic_outline_account_circle_24)
+                .into(selected_image)
+
         }
 
         adapter.setAfterSelectionListener {
@@ -133,5 +143,6 @@ class MultiCustomGalleryUI : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
 
 }
