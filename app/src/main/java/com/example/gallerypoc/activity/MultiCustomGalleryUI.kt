@@ -65,11 +65,11 @@ class MultiCustomGalleryUI : AppCompatActivity() {
 
         adapter.setOnClickListener { galleryPicture ->
             //showToast(galleryPicture.path)
-            selected_image.visibility = View.VISIBLE
+            /*selected_image.visibility = View.VISIBLE
             Glide.with(this)
                 .load(galleryPicture.path)
                 .error(R.drawable.ic_outline_account_circle_24)
-                .into(selected_image)
+                .into(selected_image)*/
 
         }
 
