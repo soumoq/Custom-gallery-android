@@ -2,9 +2,11 @@ package com.example.gallerypoc.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
+import android.media.MediaScannerConnection
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -13,16 +15,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
 import com.example.gallerypoc.R
 import com.example.gallerypoc.adapter.GalleryPicturesAdapter
 import com.example.gallerypoc.adapter.SpaceItemDecoration
 import com.example.gallerypoc.model.GalleryPicture
+import com.example.gallerypoc.util.Utils
 import com.example.gallerypoc.viewmodel.GalleryViewModel
 import kotlinx.android.synthetic.main.activity_multi_gallery_ui.*
 import kotlinx.android.synthetic.main.toolbar.*
+import java.io.File
 
 
 class MultiCustomGalleryUI : AppCompatActivity() {
@@ -64,12 +65,9 @@ class MultiCustomGalleryUI : AppCompatActivity() {
         rv.adapter = adapter
 
         adapter.setOnClickListener { galleryPicture ->
-            //showToast(galleryPicture.path)
-            /*selected_image.visibility = View.VISIBLE
-            Glide.with(this)
-                .load(galleryPicture.path)
-                .error(R.drawable.ic_outline_account_circle_24)
-                .into(selected_image)*/
+
+            val uri = Uri.parse(galleryPicture.path)
+            instacropper.setImageUri(uri)
 
         }
 

@@ -18,5 +18,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        button.setOnClickListener {
+            startActivity(Intent(this, TestActivity::class.java))
+        }
+
     }
 }
