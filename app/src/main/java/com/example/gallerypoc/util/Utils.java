@@ -9,6 +9,17 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 
 public class Utils {
+
+    private static Bitmap bitmap;
+
+    public static Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public static void setBitmap(Bitmap bitmap) {
+        Utils.bitmap = bitmap;
+    }
+
     public static Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
@@ -16,8 +27,8 @@ public class Utils {
         return Uri.parse(path);
     }
 
-    public static void toast(Context context, String s){
-        Toast.makeText(context,s,Toast.LENGTH_LONG).show();
+    public static void toast(Context context, String s) {
+        Toast.makeText(context, s, Toast.LENGTH_LONG).show();
     }
 
 }

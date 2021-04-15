@@ -1,12 +1,11 @@
 package com.example.gallerypoc.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -23,7 +22,6 @@ import com.example.gallerypoc.util.Utils
 import com.example.gallerypoc.viewmodel.GalleryViewModel
 import kotlinx.android.synthetic.main.activity_multi_gallery_ui.*
 import kotlinx.android.synthetic.main.toolbar.*
-import java.io.File
 
 
 class MultiCustomGalleryUI : AppCompatActivity() {
@@ -65,10 +63,20 @@ class MultiCustomGalleryUI : AppCompatActivity() {
         rv.adapter = adapter
 
         adapter.setOnClickListener { galleryPicture ->
-
             val uri = Uri.parse(galleryPicture.path)
             instacropper.setImageUri(uri)
+        }
 
+        fsb.setOnClickListener {
+            instacropper.crop(
+                View.MeasureSpec.makeMeasureSpec(1024, View.MeasureSpec.AT_MOST),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            ) {
+                // Do something.
+                val intent = Intent(this, ImageEditActivity::class.java)
+                Utils.setBitmap(it)
+                startActivity(intent)
+            }
         }
 
         adapter.setAfterSelectionListener {
